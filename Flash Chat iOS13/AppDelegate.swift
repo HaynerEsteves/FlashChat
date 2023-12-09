@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //This is how to configure the firebase on the app
+        FirebaseApp.configure()
+        //This is how we create the dastabase when have created the firestore data base on the firebase console. (follow documentation - Get started cloud firestore)
+        let db = Firestore.firestore()
+        //print(db) to check if the DB is working
+        
+        //initializer of the keyboard manager
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 35
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
         return true
     }
 
